@@ -1,0 +1,18 @@
+version: '2'
+services:
+    andrapp:
+        container_name: "andrapp"
+        image: kupihse/inc:v1 
+        environment:
+            - MONGO_ADDR=mongodb://mongodb
+        ports:
+            - 8080:8000
+        links:
+            - mongodb
+        depends_on:
+            - mongodb
+    mongodb:
+        container_name: "mongodb"
+        image: mongo:latest
+        ports:
+            - 27017:27017
